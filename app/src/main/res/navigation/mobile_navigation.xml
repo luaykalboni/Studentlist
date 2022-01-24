@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.studentlist_navgraph.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_studentListRvFragment2"
+            app:destination="@id/studentListRvFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_studentDetailsFragment2"
+            app:destination="@id/studentDetailsFragment"
+            app:popUpTo="@id/studentListRvFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_add_student"
+            app:destination="@id/add_student"
+            app:popUpTo="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentListRvFragment"
+        android:name="com.example.studentlist_navgraph.ui.home.StudentListRvFragment"
+        android:label="StudentListRvFragment"
+        tools:layout="@layout/fragment_students_list">
+        <action
+            android:id="@+id/action_studentListRvFragment_to_studentDetailsFragment2"
+            app:destination="@id/studentDetailsFragment"
+            app:popUpTo="@id/nav_home" />
+        <action
+            android:id="@+id/action_studentListRvFragment_to_add_student"
+            app:destination="@id/add_student" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentDetailsFragment"
+        android:name="com.example.studentlist_navgraph.ui.home.StudentDetailsFragment"
+        android:label="StudentDetailsFragment"
+        tools:layout="@layout/fragment_student_details">
+        <action
+            android:id="@+id/action_studentDetailsFragment_to_editStudent_Fragment2"
+            app:destination="@id/editStudent_Fragment"
+            app:popUpTo="@id/nav_home" />
+        <argument
+            android:name="studentid"
+            app:argType="string" />
+        <argument
+            android:name="position"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editStudent_Fragment"
+        android:name="com.example.studentlist_navgraph.ui.home.editStudent_Fragment"
+        android:label="editStudent_Fragment"
+        tools:layout="@layout/edit_student">
+        <argument
+            android:name="studentid"
+            app:argType="string" />
+        <argument
+            android:name="position"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_editStudent_Fragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_student"
+        android:name="com.example.studentlist_navgraph.ui.home.add_student"
+        android:label="fragment_add_student"
+        tools:layout="@layout/fragment_add_student" />
+
+</navigation>
